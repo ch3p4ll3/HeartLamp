@@ -8,18 +8,30 @@ This repository contains all the necessary files and instructions to build a hea
 - [Table of contents](#table-of-contents)
 - [Features](#features)
 - [Assembly Instructions](#assembly-instructions)
+  - [3D Printing](#3d-printing)
   - [Electronics](#electronics)
     - [BOM](#bom)
     - [Schematics](#schematics)
+    - [ESP Firmware](#esp-firmware)
+  - [Final assembly](#final-assembly)
+- [Photos](#photos)
+- [Future updates](#future-updates)
 
 # Features
 - WiFi Control: Easily control the lamp via WiFi using the WLED mobile app or web interface.
 - IR Receiver: Allows control of the lamp using an infrared remote control.
 - Customizable: The lamp design can be customized to fit your preferences.
 - Easy Assembly: Simple assembly process with detailed instructions.
+- Powered via USB-C
+- Supports 5V, 9V, 12V, 15V, 20V led strips
+- Thanks to USB-C's PD protocol, you can select the right voltage for your LED strips(JP2). Be carefull selecting the right voltage or you might destroy the leds!
 
 
 # Assembly Instructions
+
+## 3D Printing
+
+Print all 3 files, be careful: the stem may be too long for the printing plane, you may need to position it at 45° or print it at a slight angle. For the base, you may need to use the supports.
 
 ## Electronics
 
@@ -51,3 +63,36 @@ This repository contains all the necessary files and instructions to build a hea
 ### Schematics
 
 ![](./imgs/schematics.png)
+
+### ESP Firmware
+
+Follow the WLED [official guide](https://kno.wled.ge/basics/install-binary/) to install the firmware. I recommend to use the [installer site](https://install.wled.me/).
+
+Once installed enter the WLED interface, select settings -> LED Preferences:
+- On Hardware setup select `PWM RGB` and set the GPIOs to **12**, **13**, **14**
+- Scroll down slightly to `IR GPIO` and set the value to **15** and **24-Key RGB**
+- Click save
+
+## Final assembly
+
+Once you have printed all the files and soldered the various components to the PCB proceed by following the steps: 
+
+- Gluing the LED strip inside the stem channel. Remember to cut the LED strip where indicated, the total length should be approximately 50cm
+- Desolder the old connector from the LEDs and solder 4 new wires. Keep in mind what is the cable that carries the power(called 5v on the led strip)
+- Crimp the XH2.54 female connector to the 4 wires keeping in mind that the top pin(the one closest to the IR sensor) should be the power supply for the LEDs. The other cables can also be crimped in another sequence, it will be possible to remap them later on the WEB interface
+- (Optional) To increase the mechanical strength of the led strip near the soldering coat with hot glue
+- Stick the stem inside the base, the stem should go in with a little force
+- Insert the PCB inside the base and connect the LEDs
+- Try turning on the lamp on by powering it through the usb-c connector and check that everything is ok
+- Close the lamp by snapping the cover on. congratulations. your lamp is now working
+
+# Photos
+
+| | |
+| - | - |
+| ![pcb](./imgs/pcb.jpg) | ![](./imgs/img1.jpg) |
+| ![](./imgs/img2.jpg) | ![](./imgs/img3.jpg) |
+
+# Future updates
+- Use SMD mosfets
+- Create other shapes
