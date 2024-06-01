@@ -70,7 +70,7 @@ Follow the WLED [official guide](https://kno.wled.ge/basics/install-binary/) to 
 
 Once installed enter the WLED interface, select settings -> LED Preferences:
 - On Hardware setup select `PWM RGB` and set the GPIOs to **12**, **13**, **14**
-- Scroll down slightly to `IR GPIO` and set the value to **15** and **24-Key RGB**
+- Scroll down slightly to `IR GPIO` and set the value to **4** and **24-Key RGB**
 - Click save
 
 ## Final assembly
